@@ -3,8 +3,15 @@ import './index.css'
 
 const CommentItem = props => {
   const {commentDetails, deleteComment, toggleLike} = props
-  const {id, commenter, comment, isLiked, commentedAt} = commentDetails
-  console.log(commentDetails)
+
+  const {
+    id,
+    commenter,
+    comment,
+    isLiked,
+    commentedAt,
+    bgClassName,
+  } = commentDetails
 
   const onDeleteClick = () => deleteComment(id)
 
@@ -24,7 +31,7 @@ const CommentItem = props => {
     <>
       <li className="comment-container">
         <div className="comment-top-container">
-          <div className="icon-container">
+          <div className={`icon-container ${bgClassName}`}>
             <p className="initial">{commenter.slice(0, 1)}</p>
           </div>
           <div className="name-time-posted-comment-container">

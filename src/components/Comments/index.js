@@ -24,12 +24,21 @@ export default class Comments extends Component {
   addComment = e => {
     e.preventDefault()
     const {name, comment} = this.state
+
+    const randomIndex = Math.floor(
+      Math.random() * initialContainerBackgroundClassNames.length,
+    )
+    console.log(randomIndex)
+    const bgClassName = initialContainerBackgroundClassNames[randomIndex]
+    console.log(bgClassName)
+
     const newComment = {
       id: uuidv4(),
       commenter: name,
       comment,
       isLiked: false,
       commentedAt: new Date(),
+      bgClassName,
     }
     this.setState(prevState => ({
       commentsList: [...prevState.commentsList, newComment],
@@ -108,6 +117,7 @@ export default class Comments extends Component {
                   key={eachComment.id}
                   deleteComment={this.deleteComment}
                   toggleLike={this.toggleLike}
+                  bgClassNames={initialContainerBackgroundClassNames}
                 />
               ))}
                        
